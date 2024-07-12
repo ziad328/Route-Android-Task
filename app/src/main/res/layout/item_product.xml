@@ -3,12 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+    <data>
+
+        <variable
+            name="product"
+            type="com.example.androidtask.productList.model.Product" />
+
+    </data>
+
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         app:cardCornerRadius="20dp"
-        app:strokeColor="@color/stroke_color">
+        app:strokeColor="@color/blue"
+        app:strokeWidth="1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -17,13 +27,14 @@
 
             <ImageView
                 android:id="@+id/product_img"
-                android:layout_width="180dp"
+                android:layout_width="0dp"
                 android:layout_height="120dp"
-                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="1:1"
+                android:contentDescription="@string/product_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ContentDescription" />
+                app:url="@{product.thumbnail}" />
 
             <TextView
                 android:id="@+id/product_name"
@@ -31,8 +42,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:fontFamily="@font/poppins_medium"
-                android:lines="1"
-                android:maxLines="1"
+                android:maxLines="2"
+                android:text="@{product.title}"
                 android:textColor="@color/Darkblue"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -69,11 +80,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="@string/egp_1_200"
                 android:textColor="@color/Darkblue"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@id/product_name"
-                app:layout_constraintTop_toBottomOf="@id/product_name" />
+                app:layout_constraintTop_toBottomOf="@id/product_name"
+                tools:text="@string/egp_1_200" />
 
             <TextView
                 android:id="@+id/product_old_price"
@@ -81,27 +92,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="@string/egp_1_500"
                 android:textColor="@color/pale_blue"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="@id/product_price"
                 app:layout_constraintStart_toEndOf="@id/product_price"
-                app:layout_constraintTop_toTopOf="@id/product_price" />
+                app:layout_constraintTop_toTopOf="@id/product_price"
+                tools:text="@string/egp_1_500" />
 
             <TextView
-                android:id="@+id/review_tv"
+                android:id="@+id/rating_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="@string/review"
+                android:text="@string/rating"
                 android:textColor="@color/Darkblue"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@id/product_price"
                 app:layout_constraintTop_toBottomOf="@id/product_price" />
 
             <TextView
-                android:id="@+id/review_value_tv"
+                android:id="@+id/rating_value_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -109,7 +120,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/Darkblue"
                 android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@id/review_tv"
+                app:layout_constraintStart_toEndOf="@id/rating_tv"
                 app:layout_constraintTop_toBottomOf="@id/product_price"
                 tools:text="(4.5)" />
 
@@ -119,8 +130,8 @@
                 android:layout_marginStart="5dp"
                 android:paddingTop="3dp"
                 android:src="@drawable/ic_star"
-                app:layout_constraintStart_toEndOf="@id/review_value_tv"
-                app:layout_constraintTop_toTopOf="@id/review_value_tv" />
+                app:layout_constraintStart_toEndOf="@id/rating_value_tv"
+                app:layout_constraintTop_toTopOf="@id/rating_value_tv" />
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/add_to_cart_btn"

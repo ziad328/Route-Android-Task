@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Android Task</string>
-    <string name="review">Review</string>
+    <string name="rating">Rating</string>
     <string name="egp_1_500">EGP 1,500</string>
     <string name="egp_1_200">EGP 1,200</string>
+    <string name="egp">EGP %.2f</string>
+    <string name="product_image">product image</string>
 </resources>

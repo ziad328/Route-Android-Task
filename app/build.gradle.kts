@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.org.jetbrains.kotlin.kapt)
 }
 
 android {
