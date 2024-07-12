@@ -1,4 +1,4 @@
-package com.example.androidtask.api
+package com.example.androidtask.data.api
 
 import com.example.androidtask.productList.model.ProductsResponse
 import retrofit2.http.GET
