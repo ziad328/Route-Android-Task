@@ -52,5 +52,9 @@ class ProductsAdapter(private var products: List<Product?>? = null) :
         holder.bind(product)
     }
 
+    fun setProductsList(products: List<Product>?) {
+        this.products = products
+        notifyDataSetChanged()
+    }
 
 }
