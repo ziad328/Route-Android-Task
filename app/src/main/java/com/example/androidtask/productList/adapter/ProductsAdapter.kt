@@ -12,7 +12,7 @@ import com.example.androidtask.productList.model.Product
 class ProductsAdapter(private var products: List<Product?>? = null) :
     RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
 
-    inner class ViewHolder(val itemProductBinding: ItemProductBinding) :
+    inner class ViewHolder(private val itemProductBinding: ItemProductBinding) :
         RecyclerView.ViewHolder(itemProductBinding.root) {
 
         fun bind(product: Product?) {

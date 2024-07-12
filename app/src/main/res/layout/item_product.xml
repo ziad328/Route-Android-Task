@@ -138,7 +138,6 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
                 android:src="@drawable/ic_plus_circle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
