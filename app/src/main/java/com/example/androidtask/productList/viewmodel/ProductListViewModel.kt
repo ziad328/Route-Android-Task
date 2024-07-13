@@ -4,14 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.androidtask.productList.model.Product
-import com.example.androidtask.repository.ProductsRepository
+import com.example.domain.model.Product
+import com.example.domain.usecases.GetProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductListViewModel @Inject constructor(private val productsRepository: ProductsRepository) :
+class ProductListViewModel @Inject constructor(private val getProductsUseCase: GetProductsUseCase) :
     ViewModel() {
 
     private val _productsList = MutableLiveData<List<Product>?>()
@@ -23,10 +23,9 @@ class ProductListViewModel @Inject constructor(private val productsRepository: P
     fun getProducts() {
         viewModelScope.launch {
             try {
-
-                _productsList.value = productsRepository.getProducts()
+                _productsList.postValue(getProductsUseCase.invoke())
             } catch (e: Exception) {
-                _message.value = e.localizedMessage
+                _message.postValue(e.localizedMessage)
             }
 
         }

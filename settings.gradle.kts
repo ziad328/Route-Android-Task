@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Android Task"
 include(":app")
+include(":data")
+include(":domain")

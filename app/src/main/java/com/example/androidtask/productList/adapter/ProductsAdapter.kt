@@ -7,7 +7,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidtask.R
 import com.example.androidtask.databinding.ItemProductBinding
-import com.example.androidtask.productList.model.Product
+import com.example.domain.model.Product
 
 class ProductsAdapter(private var products: List<Product?>? = null) :
     RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
@@ -20,7 +20,8 @@ class ProductsAdapter(private var products: List<Product?>? = null) :
             itemProductBinding.product = product
             itemProductBinding.executePendingBindings()
             if (product?.discountPercentage != null) {
-                val newPrice = product?.price?.minus((product?.discountPercentage/100*product?.price))
+                val newPrice =
+                    product?.price?.minus((product?.discountPercentage!! / 100 * product?.price!!))
                 itemProductBinding.productPrice.text = itemProductBinding.productPrice.context.getString(R.string.egp, newPrice)
                 itemProductBinding.productOldPrice.isVisible = true
                 itemProductBinding.productOldPrice.text = itemProductBinding.productPrice.context.getString(R.string.egp, product?.price)
