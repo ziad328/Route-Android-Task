@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.domain.model.Product
 import com.example.domain.usecases.GetProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,7 +22,7 @@ class ProductListViewModel @Inject constructor(private val getProductsUseCase: G
     val message: LiveData<String> = _message
 
     fun getProducts() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 _productsList.postValue(getProductsUseCase.invoke())
             } catch (e: Exception) {

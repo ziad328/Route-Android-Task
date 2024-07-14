@@ -9,8 +9,6 @@ class ProductsDataSourceImpl @Inject constructor(private val webServices: WebSer
     ProductsDataSource {
     override suspend fun getProducts(): List<Product>? {
         val response = webServices.getProducts()
-        return response.products?.map {
-            it.toProduct()
-        }
+        return response.products
     }
 }
